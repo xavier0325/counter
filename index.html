@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=no" />
+		<title>计算器</title>
+		<link rel="stylesheet" media="screen and (min-width: 400px) and (max-device-width: 2280px)" href="css/index.css" />
+		<link rel="stylesheet" media="screen and (min-width: 330px) and (max-device-width: 400px)" href="css/index_smallScreen.css" />
+		<link rel="stylesheet" media="screen and (min-width: 100px) and (max-device-width: 330px)" href="css/index_smallestScreen.css" />
+		<!-- <script type="text/javascript" src="js/index.js"></script> -->
+	</head>
+
+	<body>
+		<div id="box">
+			<div id="show">
+				<div id="data">0</div>
+			</div>
+			<div id="buttons">
+				<table border="0" cellspacing="4" cellpadding="4">
+					<tr>
+						<th>
+							<div class="button" id="ac_btn">AC</div>
+						</th>
+						<th>
+							<div class="button" id="reverse_btn">+/-</div>
+						</th>
+						<th>
+							<div class="button" id="division100_btn">%</div>
+						</th>
+						<th>
+							<div class="button" id="division_btn">÷</div>
+						</th>
+					</tr>
+					<tr>
+						<th>
+							<div class="button" id="seven">7</div>
+						</th>
+						<th>
+							<div class="button" id="eight">8</div>
+						</th>
+						<th>
+							<div class="button" id="nine">9</div>
+						</th>
+						<th>
+							<div class="button" id="multiplication_btn">×</div>
+						</th>
+					</tr>
+					<tr>
+						<th>
+							<div class="button" id="four">4</div>
+						</th>
+						<th>
+							<div class="button" id="five">5</div>
+						</th>
+						<th>
+							<div class="button" id="six">6</div>
+						</th>
+						<th>
+							<div class="button" id="plus_btn">-</div>
+						</th>
+					</tr>
+					<tr>
+						<th>
+							<div class="button" id="one">1</div>
+						</th>
+						<th>
+							<div class="button" id="two">2</div>
+						</th>
+						<th>
+							<div class="button" id="three">3</div>
+						</th>
+						<th>
+							<div class="button" id="add_btn">+</div>
+						</th>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<div id="zero_btn">
+								<div class="button" id="zero">0</div>
+							</div>
+						</th>
+						<th>
+							<div class="button" id="dot_btn">.</div>
+						</th>
+						<th>
+							<div class="button" id="equal_btn">=</div>
+						</th>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</body>
+	<script>
+		//显示框对象
+		var data = document.getElementById("data");
+		//获取每个按钮对象
+		var ac_btn = document.getElementById("ac_btn");
+		var reverse_btn = document.getElementById("reverse_btn");
+		var division100_btn = document.getElementById("division100_btn");
+		var division_btn = document.getElementById("division_btn");
+		var multiplication_btn = document.getElementById("multiplication_btn");
+		var plus_btn = document.getElementById("plus_btn");
+		var add_btn = document.getElementById("add_btn");
+		var equal_btn = document.getElementById("equal_btn");
+		var dot_btn = document.getElementById("dot_btn");
+		var one = document.getElementById("one");
+		var two = document.getElementById("two");
+		var three = document.getElementById("three");
+		var four = document.getElementById("four");
+		var five = document.getElementById("five");
+		var six = document.getElementById("six");
+		var seven = document.getElementById("seven");
+		var eight = document.getElementById("eight");
+		var nine = document.getElementById("nine");
+		var zero_btn = document.getElementById("zero_btn");
+		var zero = document.getElementById("zero");
+		//AC按钮处理
+		var buttons = document.getElementById("buttons");
+
+		buttons.onclick = function() {
+			setInterval(function() {
+				if (data.innerHTML == "") {
+					ac_btn.innerHTML = "AC";
+				} else {
+					ac_btn.innerHTML = "C";
+				}
+			}, 100);
+			reFontsize();
+		}
+		ac_btn.onclick = function() {
+			ac_btn.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			// data.innerHTML = "";
+			var str = data.innerHTML.toString();
+			data.innerHTML = str.substr(0, str.length - 1); //删除前一个输入的值
+			setTimeout(reback1, 200);
+		}
+
+		function reback1() {
+			ac_btn.removeAttribute("style");
+		}
+		//+/-按钮处理
+		reverse_btn.onclick = function() {
+			reverse_btn.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+
+			if (data.innerHTML == "") {
+				alert("应对不为空的内容取相反数！")
+			} else {
+				data.innerHTML = "-(" + data.innerHTML + ")";
+			}
+			setTimeout(reback2, 200);
+		}
+
+		function reback2() {
+			reverse_btn.removeAttribute("style");
+		}
+		//%按钮处理
+		division100_btn.onclick = function() {
+			division100_btn.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			if (data.innerHTML == "") {
+				alert("应对不为空的内容作%（tips:将值除以100）运算！");
+			} else {
+				data.innerHTML = "(" + data.innerHTML + ")/100";
+			}
+			setTimeout(reback3, 200);
+		}
+
+		function reback3() {
+			division100_btn.removeAttribute("style");
+		}
+		//除法按钮处理
+		division_btn.onclick = function() {
+			division_btn.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			data.innerHTML += "/";
+			setTimeout(reback4, 200);
+		}
+
+		function reback4() {
+			division_btn.removeAttribute("style");
+		}
+		//乘法按钮处理
+		multiplication_btn.onclick = function() {
+			multiplication_btn.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			data.innerHTML += "*";
+			setTimeout(reback5, 200);
+		}
+
+		function reback5() {
+			multiplication_btn.removeAttribute("style");
+		}
+		//减法按钮处理
+		plus_btn.onclick = function() {
+			plus_btn.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			data.innerHTML += "-";
+			setTimeout(reback6, 200);
+		}
+
+		function reback6() {
+			plus_btn.removeAttribute("style");
+		}
+		//加法按钮处理
+		add_btn.onclick = function() {
+			add_btn.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			data.innerHTML += "+";
+			setTimeout(reback7, 200);
+		}
+
+		function reback7() {
+			add_btn.removeAttribute("style");
+		}
+		//等号按钮处理
+		equal_btn.onclick = function() {
+			equal_btn.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			setTimeout(reback8, 200);
+			data.innerHTML = eval(data.innerHTML);
+		}
+
+		function reback8() {
+			equal_btn.removeAttribute("style");
+		}
+		//1
+		one.onclick = function() {
+			one.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			if (data.innerHTML == "0") {
+				data.innerHTML = "1";
+			} else {
+				data.innerHTML += "1";
+			}
+			setTimeout(reback9, 200);
+		}
+
+		function reback9() {
+			one.removeAttribute("style");
+		}
+		//2
+		two.onclick = function() {
+			two.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			if (data.innerHTML == "0") {
+				data.innerHTML = "2";
+			} else {
+				data.innerHTML += "2";
+			}
+			setTimeout(reback10, 200);
+		}
+
+		function reback10() {
+			two.removeAttribute("style");
+		}
+		//3
+		three.onclick = function() {
+			three.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			if (data.innerHTML == "0") {
+				data.innerHTML = "3";
+			} else {
+				data.innerHTML += "3";
+			}
+			setTimeout(reback11, 200);
+		}
+
+		function reback11() {
+			three.removeAttribute("style");
+		}
+		//4
+		four.onclick = function() {
+			four.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			if (data.innerHTML == "0") {
+				data.innerHTML = "4";
+			} else {
+				data.innerHTML += "4";
+			}
+			setTimeout(reback12, 200);
+		}
+
+		function reback12() {
+			four.removeAttribute("style");
+		}
+		//5
+		five.onclick = function() {
+			five.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			if (data.innerHTML == "0") {
+				data.innerHTML = "5";
+			} else {
+				data.innerHTML += "5";
+			}
+			setTimeout(reback13, 200);
+		}
+
+		function reback13() {
+			five.removeAttribute("style");
+		}
+		//6
+		six.onclick = function() {
+			six.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			if (data.innerHTML == "0") {
+				data.innerHTML = "6";
+			} else {
+				data.innerHTML += "6";
+			}
+			setTimeout(reback14, 200);
+		}
+
+		function reback14() {
+			six.removeAttribute("style");
+		}
+		//7
+		seven.onclick = function() {
+			seven.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			if (data.innerHTML == "0") {
+				data.innerHTML = "7";
+			} else {
+				data.innerHTML += "7";
+			}
+			setTimeout(reback15, 200);
+		}
+
+		function reback15() {
+			seven.removeAttribute("style");
+		}
+		//8
+		eight.onclick = function() {
+			eight.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			if (data.innerHTML == "0") {
+				data.innerHTML = "8";
+			} else {
+				data.innerHTML += "8";
+			}
+			setTimeout(reback16, 200);
+		}
+
+		function reback16() {
+			eight.removeAttribute("style");
+		}
+		//9
+		nine.onclick = function() {
+			nine.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			if (data.innerHTML == "0") {
+				data.innerHTML = "9";
+			} else {
+				data.innerHTML += "9";
+			}
+			setTimeout(reback17, 200);
+		}
+
+		function reback17() {
+			nine.removeAttribute("style");
+		}
+		//0
+		zero_btn.onclick = function() {
+			zero.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			zero_btn.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			data.innerHTML += "0";
+			setTimeout(reback18, 200);
+		}
+
+		function reback18() {
+			zero.removeAttribute("style");
+			zero_btn.removeAttribute("style");
+		}
+		//.
+		dot_btn.onclick = function() {
+			dot_btn.setAttribute("style", "background-color: white;color: rgb(51,51,51);");
+			data.innerHTML += ".";
+			setTimeout(reback19, 200);
+		}
+
+		function reback19() {
+			dot_btn.removeAttribute("style");
+		}
+		//显示处理
+		function reFontsize() {
+			if (data.offsetWidth >= 300) {
+				data.style.fontSize = "45px";
+			}
+			if (data.offsetWidth >= 300 && data.style.fontSize == "45px") {
+				data.style.fontSize = "25px";
+			}
+			if (data.innerHTML == "") {
+				data.style.fontSize = "100px";
+			}
+		}
+		//数据获取
+		// window.onload=function(){
+		// 	var datas=document.getElementsByClassName("button");
+		// 	alert(datas[].innerHTML);
+		// for (var i=0;i<datas.length;i++){
+		// 	datas[i].onclick=function(){
+		// 		if(datas[i].innerHTML=="AC"){
+		// 			data.innerHTML="";
+		// 		}
+
+		// 	}
+		// }
+		// }
+	</script>
+</html>

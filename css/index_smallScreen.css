@@ -1,0 +1,128 @@
+@font-face {
+	font-family: 'ziti';
+	src: url(./ziti.ttf);
+}
+
+/* *{
+	margin: 0;
+	padding: 0;
+} */
+body {
+	font-family: 'ziti';
+	margin: 0;
+	padding: 0;
+}
+
+#box {
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	margin: 0 auto;
+}
+
+#show {
+	width: 100%;
+	height: 180px;
+	/*border: 1px solid white;*/
+	position: relative;
+}
+
+#data {
+	margin-right: 20px;
+	position: absolute;
+	/* max-height: 220px; */
+	/*border: 1px solid black;*/
+	right: 0;
+	bottom: 0;
+	font-size: 100px;
+	color: white;
+	word-break: break-all;
+	overflow: scroll;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#buttons {
+	width: 100%;
+	height: 450px;
+	/*调试内容 */
+	/*border: 1px solid white;*/
+	/*display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding: 2px 10px;*/
+}
+
+table {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	/* padding: 10px !important; */
+}
+
+.button {
+	width: 70px;
+	height: 70px;
+	margin: 0 auto;
+	background-color: rgb(51, 51, 51);
+	border-radius: 35px;
+	text-align: center;
+	line-height: 70px;
+	font-size: 25px;
+	color: white;
+	user-select: none;
+}
+
+#zero_btn {
+	width: 170px;
+	height: 70px;
+	margin: 0 auto;
+	background-color: rgb(51, 51, 51);
+	border-radius: 35px;
+	line-height: 70px;
+}
+
+#zero {
+	margin-left: 0;
+}
+
+#ac_btn {
+	background-color: rgb(165, 165, 165);
+	color: black;
+}
+
+#reverse_btn {
+	background-color: rgb(165, 165, 165);
+	color: black;
+}
+
+#division100_btn {
+	background-color: rgb(165, 165, 165);
+	color: black;
+}
+
+#division_btn {
+	background-color: rgb(255, 159, 6);
+}
+
+#multiplication_btn {
+	background-color: rgb(255, 159, 6);
+}
+
+#plus_btn {
+	background-color: rgb(255, 159, 6);
+}
+
+#add_btn {
+	background-color: rgb(255, 159, 6);
+}
+
+#equal_btn {
+	background-color: rgb(255, 159, 6);
+}
+
+/* .reverseColor{
+	background-color: white;
+	color: rgb(51,51,51);
+}
+ */
